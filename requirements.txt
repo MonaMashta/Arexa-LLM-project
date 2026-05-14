@@ -1,0 +1,6 @@
+langchain-community
+arxiv
+pymupdf
+
+# install by terminal uv: pip freeze > requirements.txt
+# to install: pip install -r requirements.txt
