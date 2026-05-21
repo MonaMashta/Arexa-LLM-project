@@ -37,20 +37,8 @@ The system allows users to search using natural language queries and returns:
 ---
 
 ## 🏗️ System Architecture
-User Query
-↓
-Embedding Model
-↓
-arXiv Search API
-↓
-Vector Embeddings
-↓
-Cosine Similarity Matching
-↓
-Ranked Results
-↓
-Web UI (Timeline Display)
 
+<img src="https://raw.githubusercontent.com/MonaMashta/Arexa-LLM-project/main/arcsystem.png" width="1000"/>
 
 ---
 
