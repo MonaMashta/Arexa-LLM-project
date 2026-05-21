@@ -5,10 +5,7 @@
 ## 🎥 Demo Video
 
 
-<video controls autoplay loop muted width="100%">
-  <source src="https://raw.githubusercontent.com/MonaMashta/Arexa-LLM-project/main/Demo.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+![Demo](https://raw.githubusercontent.com/MonaMashta/Arexa-LLM-project/main/demo.gif)
 
 ---
 
