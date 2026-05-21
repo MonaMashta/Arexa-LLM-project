@@ -1,6 +1,23 @@
-langchain-community
-arxiv
-pymupdf
+flask
+gunicorn
 
-# install by terminal uv: pip freeze > requirements.txt
-# to install: pip install -r requirements.txt
+langchain
+langchain-openai
+
+openai
+
+sentence-transformers
+
+transformers
+torch
+
+arxiv
+
+scikit-learn
+pandas
+numpy
+
+chromadb
+
+matplotlib
+seaborn

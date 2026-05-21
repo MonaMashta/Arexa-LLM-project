@@ -20,7 +20,7 @@ background:#050510;
 
 color:white;
 
-overflow:hidden;
+overflow-x:hidden;
 
 min-height:100vh;
 
@@ -280,8 +280,10 @@ box-shadow:
 /* ========================= */
 
 .hero{
+min-height:100vh;
 
-height:calc(100vh - 100px);
+padding-bottom:60px;
+
 
 display:flex;
 justify-content:center;
@@ -679,3 +681,129 @@ gap:20px;
 }
 
 }
+
+/* ########################
+this style for servy timeline
+ */
+
+.results-section{
+
+width:100%;
+max-width:900px;
+
+margin:60px auto;
+
+position:relative;
+
+padding-left:60px;
+padding-right:20px;
+
+display:none;
+box-sizing:border-box;
+}
+
+.timeline-line{
+
+position:absolute;
+
+left:20px;
+top:0;
+
+width:2px;
+height:100%;
+
+background:rgba(255,255,255,.15);
+}
+
+.paper-card{
+
+position:relative;
+
+max-width:100%;
+
+box-sizing:border-box;
+
+overflow:hidden;
+
+word-wrap:break-word;
+
+background:rgba(17,24,39,.75);
+
+backdrop-filter:blur(12px);
+
+padding:24px;
+
+margin-bottom:28px;
+
+border-radius:18px;
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.25s;
+}
+
+.paper-card:hover{
+
+transform:translateY(-4px);
+
+border-color:#38bdf8;
+}
+
+.paper-card::before{
+
+content:"";
+
+position:absolute;
+
+left:-38px;
+top:28px;
+
+width:14px;
+height:14px;
+
+border-radius:50%;
+
+background:#38bdf8;
+
+box-shadow:0 0 18px #38bdf8;
+}
+
+.paper-title{
+
+font-size:22px;
+font-weight:700;
+
+color:#38bdf8;
+
+margin-bottom:12px;
+}
+
+.paper-summary{
+overflow-wrap:break-word;
+
+color:#cbd5e1;
+
+line-height:1.7;
+}
+
+.paper-year{
+
+margin-top:18px;
+
+font-size:14px;
+
+color:#94a3b8;
+}
+
+.paper-link{
+display:inline-block;
+margin-top:12px;
+color:#38bdf8;
+text-decoration:none;
+font-weight:600;
+}
+
+.paper-link:hover{
+text-decoration:underline;
+}
+

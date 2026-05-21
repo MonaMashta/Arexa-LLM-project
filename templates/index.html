@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Arexa PRI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- STARS -->
+
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="stars3"></div>
+
+<!-- MAIN CONTAINER -->
+
+<div class="container">
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+
+<div class="logo-circle"></div>
+
+<span>Arexa PRI</span>
+
+</div>
+
+<button class="nav-btn">
+Log In
+</button>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+
+<!-- CENTER CONTENT -->
+
+<div class="hero-content">
+
+<div class="tag">
+✨ Your Research Intelligence Agent
+</div>
+
+<h1>
+Arexa PRI: Intelligent
+<br>
+Innovation Discovery
+</h1>
+
+<p>
+Your Agentic RAG partner for patents and academic insights,
+transforming massive research datasets into actionable innovation.
+</p>
+
+<!-- SEARCH -->
+
+<div class="hero-buttons">
+
+<input
+id="queryInput"
+type="text"
+class="secondary-btn"
+placeholder="Search patents, papers, research..."
+onkeydown="handleKey(event)"
+>
+
+</div>
+<!-- LOADING (هنا) -->
+<div id="loading" style="display:none; margin-top:20px; color:#38bdf8;">
+    Searching papers... <span id="progress">0%</span>
+</div>
+
+<!-- RESULTS -->
+<div id="resultsSection" class="results-section">
+    <div class="timeline-line"></div>
+    <div id="results"></div>
+</div>
+
+<!-- OPTIONS -->
+<div class="options">
+
+<div class="option">
+
+<h3>✓ Patents</h3>
+
+<p>e.g Saudi Patent</p>
+</div>
+<div class="option">
+
+<h3>✓ Academic Research</h3>
+
+<p>e.g arXiv papers</p>
+
+</div>
+
+<div class="option">
+
+<h3>✓ Company Filings</h3>
+
+<p>Innovation reports</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- // Script -->
+
+
+<script>
+
+async function search() {
+
+    const query = document.getElementById("queryInput").value;
+
+    const loading = document.getElementById("loading");
+    const progress = document.getElementById("progress");
+    const container = document.getElementById("results");
+    const resultsSection = document.getElementById("resultsSection");
+
+    // show loading
+    loading.style.display = "block";
+    progress.innerText = "0%";
+
+    let fake = 0;
+    const interval = setInterval(() => {
+        fake += Math.floor(Math.random() * 10) + 5;
+        if (fake >= 90) fake = 90;
+        progress.innerText = fake + "%";
+    }, 200);
+
+    // fetch backend
+    const res = await fetch(`/query?q=${encodeURIComponent(query)}`);
+    const data = await res.json();
+
+    clearInterval(interval);
+    progress.innerText = "100%";
+    loading.style.display = "none";
+
+    // show results section
+    resultsSection.style.display = "block";
+
+    document.querySelector(".options").style.opacity = "0";
+    document.querySelector(".options").style.transform = "translateY(-10px)";
+
+    container.innerHTML = "";
+
+    if (!data || data.length === 0) {
+        container.innerHTML = "<p>No results found</p>";
+        return;
+    }
+
+    let delay = 0;
+
+    data.forEach(paper => {
+
+        setTimeout(() => {
+
+            container.innerHTML += `
+                <div class="paper-card">
+
+                    <div class="paper-title">
+                        ${paper.title}
+                    </div>
+
+                    <div class="paper-summary">
+                        ${paper.summary}
+                    </div>
+
+                    <div class="paper-year">
+                         ${paper.year}
+                    </div>
+
+                    <a href="${paper.url}" target="_blank" class="paper-link">
+                        🔗 Open Paper
+                    </a>
+
+                </div>
+            `;
+
+        }, delay);
+
+        delay += 200;
+    });
+
+}
+
+function handleKey(event){
+    if(event.key === "Enter"){
+        search();
+    }
+}
+
+</script>
+
+
+</body>
+
+</html>

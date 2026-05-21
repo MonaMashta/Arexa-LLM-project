@@ -1,3 +1,8 @@
 .env
-.venv/
 __pycache__/
+*.pyc
+venv/
+.venv/
+chroma_db/
+results.json
+structured_papers.json
